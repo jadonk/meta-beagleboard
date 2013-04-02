@@ -1,0 +1,29 @@
+From 2a186838341d5ccd9d7591b802e7c010d4547b5b Mon Sep 17 00:00:00 2001
+From: Jason Kridner <jdk@ti.com>
+Date: Tue, 2 Apr 2013 17:28:01 +0000
+Subject: [PATCH] am335x_evm: increase USB current in findfdt in bootcmd
+
+This is clearly a hack and not where this belongs, but it makes it
+fairly simple to override for now.  The biggest usage risk is that
+people will override the bootcmd and not realize why their board
+hangs when powered over USB just because they didn't run findfdt,
+which is otherwise unrelated.
+---
+ include/configs/am335x_evm.h |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/include/configs/am335x_evm.h b/include/configs/am335x_evm.h
+index b7c443c..406c441 100644
+--- a/include/configs/am335x_evm.h
++++ b/include/configs/am335x_evm.h
+@@ -133,6 +133,7 @@
+ 		"if test $board_name = A335BONE; then " \
+ 			"setenv fdtfile am335x-bone.dtb; fi; " \
+ 		"if test $board_name = A335BNLT; then " \
++			"i2c mw 0x24 1 0x3e; " \
+ 			"setenv fdtfile am335x-boneblack.dtb; fi; " \
+ 		"if test $board_name = A33515BB; then " \
+ 			"setenv fdtfile am335x-evm.dtb; fi; " \
+-- 
+1.7.8.6
+

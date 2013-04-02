@@ -6,6 +6,7 @@ UBOOT_IMAGE = "u-boot-${MACHINE}-${PV}-${PR}.img"
 UBOOT_SYMLINK = "u-boot-${MACHINE}.img"
 
 PV = "2013.01.01"
+PR = "r1"
 
 # No patches for other machines yet
 COMPATIBLE_MACHINE = "(beaglebone)"
@@ -30,6 +31,7 @@ SRC_URI = "git://www.denx.de/git/u-boot.git;protocol=git \
            file://0014-Implement-nand_extent_skip_bad.patch \
            file://0015-Implement-NAND-dfu-support.patch \
            file://0021-am335x_evm-Add-better-timings-for-the-new-BeagleBoar.patch \
+           file://0022-am335x_evm-increase-USB-current-in-findfdt-in-bootcm.patch \
            ${FWENV} \
           "
 
