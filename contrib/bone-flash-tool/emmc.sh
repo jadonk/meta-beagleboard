@@ -5,6 +5,9 @@
 
 export PATH=$PATH:/bin:/sbin:/usr/bin:/usr/sbin
 
+# Indicate that the script is running by changing away from heartbeat on USR0
+echo timer > /sys/class/leds/beaglebone\:green\:usr0/trigger
+
 PART1MOUNT="/media/1"
 PART2MOUNT="/media/2"
 
